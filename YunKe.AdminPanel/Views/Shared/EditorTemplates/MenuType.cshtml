@@ -1,0 +1,10 @@
+﻿@model YunKe.AdminPanelCore.Enum.MenuType
+
+@{
+    var items = new System.Web.Mvc.SelectListItem[] {
+            new System.Web.Mvc.SelectListItem(){Text="模块", Value="1", Selected = Model == MenuType.Module },
+            new System.Web.Mvc.SelectListItem(){Text="菜单", Value="2", Selected = Model == MenuType.Menu },
+            new System.Web.Mvc.SelectListItem(){Text="按钮", Value="3", Selected = Model == MenuType.Button },
+    };
+}
+@Html.DropDownList("", items, new { @class = "form-control", placeholder = "类型" })

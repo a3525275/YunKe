@@ -1,0 +1,189 @@
+﻿
+@{
+    var currentPage = Kooboo.CMS.Sites.View.MenuHelper.Current().FullName.ToLower();
+
+}
+<div class="navbar navbar-fixed-top scroll-hide">
+    <div class="container-fluid top-bar">
+        <div class="pull-right">
+
+            <ul class="nav navbar-nav pull-right">
+                <li class="dropdown messages hidden-xs">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                        <span class="se7en-envelope" aria-hidden="true"></span>
+                        <div class="sr-only">
+                            消息
+                        </div>
+                        <p class="counter">
+                            3
+                        </p>
+                    </a>
+                    <ul class="dropdown-menu messages">
+                        <li>
+                            <a href="#">
+                                <img width="34" height="34" src="~/se7en/images/avatar-male2.png">我们可以见面吗？我想...
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img width="34" height="34" src="~/se7en/images/avatar-female.png">重要的数据需要分析...
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img width="34" height="34" src="~/se7en/images/avatar-male2.png">Se7en是一款不错的主题。
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown settings hidden-xs">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                        <span class="se7en-gear" aria-hidden="true"></span>
+                        <div class="sr-only">
+                            设置
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="settings-link blue" href="javascript:chooseStyle('none', 30)"><span></span>蓝色</a>
+                        </li>
+                        <li>
+                            <a class="settings-link green" href="javascript:chooseStyle('green-theme', 30)"><span></span>绿色</a>
+                        </li>
+                        <li>
+                            <a class="settings-link orange" href="javascript:chooseStyle('orange-theme', 30)"><span></span>橘黄色</a>
+                        </li>
+                        <li>
+                            <a class="settings-link magenta" href="javascript:chooseStyle('magenta-theme', 30)"><span></span>品红</a>
+                        </li>
+                        <li>
+                            <a class="settings-link gray" href="javascript:chooseStyle('gray-theme', 30)"><span></span>灰色</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown user hidden-xs open">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                        <img width="34" height="34" src="~/se7en/images/avatar-male.jpg">管理员<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#">
+                                <i class="icon-user"></i>我的账户
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="icon-gear"></i>账户设置
+                            </a>
+                        </li>
+                        <li>
+                            <a href="login1.html">
+                                <i class="icon-signout"></i>退出
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <button class="navbar-toggle">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="logo" href="@Url.FrontUrl().PageUrl("home")">@(Site.Current.DisplayName)</a>
+    </div>
+    <div class="container-fluid main-nav clearfix">
+        <div class="nav-collapse">
+            <ul class="nav">
+                <li>
+                    <a class="@(currentPage=="home"?"current":"")" href="@Url.FrontUrl().PageUrl("home")">
+                    <span aria-hidden="true" class="se7en-home"></span>系统分析</a>
+                </li>
+                <li>
+                    <a  class="@(currentPage=="projects"?"current":"")"  href="@Url.FrontUrl().PageUrl("projects")">
+                        <span aria-hidden="true" class="se7en-feed"></span>@("订单市场".Label())
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="@(currentPage.StartsWith("tasks")?"current":"")"  href="#">
+                        <span class="se7en-star" aria-hidden="true"></span>@("我的任务".Label())<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="@Url.FrontUrl().PageUrl("tasks",new { category = "pending"})">
+                            <i class="icon-upload-alt"></i>
+                            <span>优化中</span></a>
+                        </li>
+                        <li>
+                            <a href="@Url.FrontUrl().PageUrl("tasks",new { category = "expiring"})">
+                                <i class="icon-time"></i>
+                                <span>即将到期</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="@Url.FrontUrl().PageUrl("tasks",new { category = "expiring"})">
+                                <i class="icon-jpy"></i>
+                                <span>扣费中</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.FrontUrl().PageUrl("tasks",new { category = "expiring"})">
+                                <i class="icon-sort-by-attributes-alt"></i>
+                                <span>排名下降</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="@Url.FrontUrl().PageUrl("tasks",new { category = "expiring"})">
+                                <i class="icon-remove-circle"></i>
+                                <span>关闭项目</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="@(currentPage.StartsWith("fee")?"current":"")"  href="@Url.FrontUrl().PageUrl("fee")">
+                        <span class="se7en-forms" aria-hidden="true"></span>@("佣金管理".Label())<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="@Url.FrontUrl().PageUrl("fee",new { category = "account"})">
+                                <i class="icon-jpy"></i>
+                                <span>账户金额</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.FrontUrl().PageUrl("fee",new { category = "tasks"})">
+                                <i class="icon-time"></i>
+                                <span>任务佣金</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="@Url.FrontUrl().PageUrl("fee",new { category = "team"})">
+                                <i class="icon-upload-alt"></i>
+                                <span>团队佣金</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="@(currentPage=="messages"?"current":"")"  href="@Url.FrontUrl().PageUrl("messages")">
+                        <span aria-hidden="true" class="se7en-tables"></span>@("我的消息".Label())
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.FrontUrl().PageUrl("team")" class="@(currentPage=="team"?"current":"")" >
+                        <span aria-hidden="true" class="se7en-charts"></span>@("我的团队".Label())
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.FrontUrl().PageUrl("profile")" class="@(currentPage=="profile"?"current":"")" >
+                        <span aria-hidden="true" class="se7en-gallery"></span>@("基本信息".Label())
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

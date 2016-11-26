@@ -1,0 +1,118 @@
+﻿@model TextReplyInfo
+
+@{
+    ViewBag.Title = "编辑文本回复";
+    Layout = "~/Views/Shared/_Layout_Content.cshtml";
+}
+
+<div class="wrapper wrapper-content">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>@ViewBag.Title</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            @using (Html.BeginForm("EditSingleTextReply", "Reply", new { id = Model.Id }, FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                <div class="form-group">
+                    <label class="col-sm-3 control-label"><span class="required">*</span>@Html.LabelFor(m => m.Text)：</label>
+                    <div class="col-sm-8">
+                        @Html.TextAreaFor(m => m.Text, new { @class = "form-control required", placeholder = "回复内容", rows = 3 })
+                        @Html.ValidationMessageFor(m => m.Text)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.ReplyType)：</label>
+                    <div class="col-sm-8">
+                        <div class="controls">
+                            <label class=" inline">
+                                <input type="checkbox" name="ReplyType" id="optionsRadios1" value="1" @(Model.ReplyType ==  GuoYiTang.Data.Entity.ReplyType.Subscribe
+    ?"checked":"")>
+                                关注时回复
+                            </label>
+                            <label class=" inline">
+                                <input type="checkbox" name="ReplyType" id="optionsRadios2" value="4"
+                                       @(Model.ReplyType ==  GuoYiTang.Data.Entity.ReplyType.NoMatch
+    ?"checked":"")>
+                                无匹配回复
+                            </label>
+                            <label class=" inline">
+                                <input type="checkbox" name="ReplyType" id="optionsRadios2" value="2" @(Model.ReplyType ==  GuoYiTang.Data.Entity.ReplyType.Keys
+    ?"checked":"")>
+                                关键字回复
+                            </label>
+                            @Html.ValidationMessageFor(m => m.ReplyType)
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Keys)：</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Keys, new { @class = "form-control", placeholder = "关键字" })
+                        @Html.ValidationMessageFor(m => m.Keys)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.MatchType)：</label>
+                    <div class="col-sm-8">
+                        <div class="controls">
+                            <label class=" inline">
+                                <input type="radio" name="MatchType" id="optionsRadios1" value="0" @(Model.MatchType== GuoYiTang.Data.Entity.MatchType.Like
+    ?"checked":"")>
+                                模糊匹配
+                            </label>
+                            <label class=" inline">
+                                <input type="radio" name="MatchType" id="optionsRadios2" value="1" @(Model.MatchType== GuoYiTang.Data.Entity.MatchType.Equal
+    ?"checked":"")>
+                                精确匹配
+                            </label>
+                            @Html.ValidationMessageFor(m => m.MatchType)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-8">
+                        <div class="controls">
+                            <label>
+                                @Html.CheckBoxFor(m => m.IsDisable)
+                                @Html.DisplayNameFor(m => m.IsDisable)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-8">
+                        <button class="btn btn-info" type="submit">保存</button>
+                        <button class="btn btn-white" type="button" id="btnBack">返回</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section scripts{
+    @Scripts.Render("~/content/js/user")
+    <script>
+        $("#btnBack").bind("click", function (e) {
+            XPage.GoTo(e.target, "@Url.Action("Index")");
+        });
+
+        function viewModel() {
+            var self = this;
+            self.Bind = ko.observable();
+            self.BindValue = ko.observable();
+            self.Url = ko.observable("http://");
+            self.BindTopic = ko.observable();
+        }
+        var mainVm = new viewModel();
+        //ko.applyBindings(mainVm);
+    </script>
+}

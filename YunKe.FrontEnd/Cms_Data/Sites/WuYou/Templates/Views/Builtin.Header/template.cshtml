@@ -1,0 +1,41 @@
+﻿<!--公用头部 开始-->
+<!--页眉-->
+<div class="head_box w_100">
+    <div class="head w_1200">
+        <!--<div class="shouji fl">触屏版</div>-->
+        <div class="top_nav fr over">
+            <a class="fl" href="@Url.FrontUrl().PageUrl("home")">首页</a>
+            <a class="fl" href="@Url.FrontUrl().PageUrl("member~login")">登陆</a>
+            <a class="fl top_nav_zhuce" href="@Url.FrontUrl().PageUrl("member~register")">注册</a>
+            <a class="fl" href="">帮助中心</a>
+            <a class="fl top_nav_jiantou" href="">关于我们</a>
+        </div>
+        <img src="/cms_data/sites/wuyou/themes/default/images/erweima.png" id="erweima" />
+    </div>
+</div>
+<!--搜索-->
+<div class="w_100 sousuo_box">
+    <div class="w_1200 over">
+        <a href="@Url.FrontUrl().PageUrl("home")" class="logo fl"><img src="/cms_data/sites/wuyou/themes/default/images/logo.png" /></a>
+        <a class="sousuo_xuqiu_button fr">立即发布需求</a>
+        <span class="sousuo_huozhe fr">或者</span>
+        <div class="fr over sousuo">
+            <span class="fl">价格查询</span>
+            <input class="sousuo_input fl" type="text" placeholder="查询关键字价格" />
+            <a href="@Url.FrontUrl().PageUrl("tasks")" class="fr sousuo_button">搜索</a>
+        </div>
+    </div>
+</div>
+<!--导航-->
+<div class="nav_box w_100">
+    <div class="nav w_1200 over">
+        @foreach (var item in MenuHelper.Top())
+        {
+            if (item.Navigation.Show)
+            {
+                <a class="fl @(MenuHelper.IsCurrent(item) ? "style" : "")" href="@Url.FrontUrl().PageUrl(item.FullName)">@item.LinkText</a>
+            }
+        }
+    </div>
+</div>
+<!--公用头部 结束--> 

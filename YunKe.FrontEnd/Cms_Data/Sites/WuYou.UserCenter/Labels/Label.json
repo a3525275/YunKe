@@ -1,0 +1,56 @@
+﻿[
+  {
+    "UUID": "FBFNFUSPJX",
+    "Name": "订单市场",
+    "Value": "订单市场",
+    "Category": "",
+    "UtcCreationDate": "2016-11-17T15:31:46.6907894Z",
+    "UtcLastestModificationDate": null,
+    "LastestEditor": "admin"
+  },
+  {
+    "UUID": "JZ9PUUXJJ2",
+    "Name": "我的任务",
+    "Value": "我的任务",
+    "Category": "",
+    "UtcCreationDate": "2016-11-17T15:31:46.7665164Z",
+    "UtcLastestModificationDate": null,
+    "LastestEditor": "admin"
+  },
+  {
+    "UUID": "F6PZTVDUX7",
+    "Name": "佣金管理",
+    "Value": "佣金管理",
+    "Category": "",
+    "UtcCreationDate": "2016-11-17T15:31:46.7850211Z",
+    "UtcLastestModificationDate": null,
+    "LastestEditor": "admin"
+  },
+  {
+    "UUID": "Z9LGX8MDAR",
+    "Name": "我的消息",
+    "Value": "我的消息",
+    "Category": "",
+    "UtcCreationDate": "2016-11-17T15:31:46.8025466Z",
+    "UtcLastestModificationDate": null,
+    "LastestEditor": "admin"
+  },
+  {
+    "UUID": "GU3VMFDP42",
+    "Name": "我的团队",
+    "Value": "我的团队",
+    "Category": "",
+    "UtcCreationDate": "2016-11-17T15:31:46.819049Z",
+    "UtcLastestModificationDate": null,
+    "LastestEditor": "admin"
+  },
+  {
+    "UUID": "LHWAKREM76",
+    "Name": "基本信息",
+    "Value": "基本信息",
+    "Category": "",
+    "UtcCreationDate": "2016-11-17T15:31:46.8280499Z",
+    "UtcLastestModificationDate": null,
+    "LastestEditor": "admin"
+  }
+]

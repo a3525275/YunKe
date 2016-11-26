@@ -1,0 +1,82 @@
+﻿@model WxSiteMenuDto
+
+@{
+    ViewBag.Title = "编辑微官网首页菜单";
+    Layout = "~/Views/Shared/_Layout_Content.cshtml";
+}
+
+<div class="wrapper wrapper-content">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>@ViewBag.Title</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            @using (Html.BeginForm("Edit", "MicroSite", new { accountId = Model.WxAccountId }, FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                @Html.HiddenFor(p=>p.Id)
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Text)：</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Text, new { @class = "form-control", placeholder = "名称" })
+                        @Html.ValidationMessageFor(m => m.Text)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Icon)：</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Icon, new { @class = "form-control", placeholder = "图标" })
+                        @Html.ValidationMessageFor(m => m.Icon)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Link)：</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Link, new { @class = "form-control", placeholder = "链接" })
+                        @Html.ValidationMessageFor(m => m.Link)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Sequence)：</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Sequence, new { @class = "form-control", placeholder = "排序" })
+                        @Html.ValidationMessageFor(m => m.Sequence)
+                        <p class="help-block">
+                            序号越小越靠前
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-8">
+                        <button class="btn btn-info" type="submit">保存</button>
+                        <button class="btn btn-white" type="button" id="btnBack">返回</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section scripts{
+    @Scripts.Render("~/content/js/user")
+    <script>
+        $("#btnBack").bind("click", function(e) {
+            XPage.GoTo(e.target, "@Url.Action("Index")");
+        });
+
+        function viewModel (){
+            var self = this;
+            self.Bind = ko.observable();
+            self.BindValue = ko.observable();
+            self.Url = ko.observable("http://");
+            self.BindTopic = ko.observable();
+        }
+        var mainVm = new viewModel();
+        //ko.applyBindings(mainVm);
+    </script>
+}

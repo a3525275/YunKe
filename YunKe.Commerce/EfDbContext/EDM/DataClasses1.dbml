@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="YunKe.Business" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=114.55.10.18;Initial Catalog=YunKe.Business;Integrated Security=False;User ID=itbdb;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" SettingsObjectName="YunKe.Commerce.Properties.Settings" SettingsPropertyName="YunKe_BusinessConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.WxTopics" Member="WxTopics">
+    <Type Name="WxTopics">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="IconUrl" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="IsRelease" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ShortBrief" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ViewCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HelpArticles" Member="HelpArticles">
+    <Type Name="HelpArticles">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="ShortDescription" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="HelpArticleCategoryId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Author" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="AuthorLink" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="SourceUrl" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="HelpArticleCategories_HelpArticles" Member="HelpArticleCategories" ThisKey="HelpArticleCategoryId" OtherKey="Id" Type="HelpArticleCategories" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IndustryInfoes" Member="IndustryInfoes">
+    <Type Name="IndustryInfoes">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="Icon" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KeyWordRankHistories" Member="KeyWordRankHistories">
+    <Type Name="KeyWordRankHistories">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ComputeDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Page" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastDayPage" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpDownRate" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="SearchEngineId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="SearchEngineName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OptimizationKeyWordId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="OptimizationKeyWords_KeyWordRankHistories" Member="OptimizationKeyWords" ThisKey="OptimizationKeyWordId" OtherKey="Id" Type="OptimizationKeyWords" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="SearchPlatforms_KeyWordRankHistories" Member="SearchPlatforms" ThisKey="SearchEngineId" OtherKey="Id" Type="SearchPlatforms" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Members" Member="Members">
+    <Type Name="Members">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Mobile" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="NickName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Birthday" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Address_Country" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address_City" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address_Province" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address_DetailAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address_Zip" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MemberType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OpenId" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TeamId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="CompletingRate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Praise" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Discriminator" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="OptimizatorTeam_Id" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Association Name="Members_OptimizatorTeams" Member="OptimizatorTeams2" ThisKey="Id" OtherKey="TeamOwnerId" Type="OptimizatorTeams" />
+      <Association Name="Members_Projects" Member="Projects" ThisKey="Id" OtherKey="CustomerId" Type="Projects" />
+      <Association Name="Members_Tenders" Member="Tenders" ThisKey="Id" OtherKey="OptimizatorId" Type="Tenders" />
+      <Association Name="OptimizatorTeams_Members" Member="OptimizatorTeams" ThisKey="OptimizatorTeam_Id" OtherKey="Id" Type="OptimizatorTeams" IsForeignKey="true" />
+      <Association Name="OptimizatorTeams_Members1" Member="OptimizatorTeams1" ThisKey="TeamId" OtherKey="Id" Type="OptimizatorTeams" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OptimizationKeyWords" Member="OptimizationKeyWords">
+    <Type Name="OptimizationKeyWords">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="KeyWord" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PricingUnit" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RankingStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="OptimizationKeyWords_KeyWordRankHistories" Member="KeyWordRankHistories" ThisKey="Id" OtherKey="OptimizationKeyWordId" Type="KeyWordRankHistories" />
+      <Association Name="Projects_OptimizationKeyWords" Member="Projects" ThisKey="ProjectId" OtherKey="Id" Type="Projects" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OptimizatorTeams" Member="OptimizatorTeams">
+    <Type Name="OptimizatorTeams">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TeamOwnerId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="OptimizatorTeams_Members" Member="Members" ThisKey="Id" OtherKey="OptimizatorTeam_Id" Type="Members" />
+      <Association Name="OptimizatorTeams_Members1" Member="Members1" ThisKey="Id" OtherKey="TeamId" Type="Members" />
+      <Association Name="Members_OptimizatorTeams" Member="Members2" ThisKey="TeamOwnerId" OtherKey="Id" Type="Members" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Orders" Member="Orders">
+    <Type Name="Orders">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProjectId" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TotalPrice" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="OrderNumber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PaymentProvider" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Projects" Member="Projects">
+    <Type Name="Projects">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Domain" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="DomainAge" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Address_Country" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address_City" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address_Province" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address_DetailAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address_Zip" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Industry" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PricingUnit" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FinishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CancleReason" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Praise" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AllowTendingAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SearchEngine" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EndTendingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StartTendingDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OrderNumber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Projects_OptimizationKeyWords" Member="OptimizationKeyWords" ThisKey="Id" OtherKey="ProjectId" Type="OptimizationKeyWords" />
+      <Association Name="Projects_Questions" Member="Questions" ThisKey="Id" OtherKey="ProjectId" Type="Questions" />
+      <Association Name="Projects_Tenders" Member="Tenders" ThisKey="Id" OtherKey="ProjectId" Type="Tenders" />
+      <Association Name="Projects_Commissions" Member="Commissions" ThisKey="Id" OtherKey="ProjectId" Type="Commissions" />
+      <Association Name="Members_Projects" Member="Members" ThisKey="CustomerId" OtherKey="Id" Type="Members" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Questions" Member="Questions">
+    <Type Name="Questions">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Content" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="QuestionCatalog" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsAnswered" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Closed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Reply" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="RaiseDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ReplyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OptimizatorId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Domain" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Projects_Questions" Member="Projects" ThisKey="ProjectId" OtherKey="Id" Type="Projects" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SearchPlatforms" Member="SearchPlatforms">
+    <Type Name="SearchPlatforms">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="Icon" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="SearchPlatforms_KeyWordRankHistories" Member="KeyWordRankHistories" ThisKey="Id" OtherKey="SearchEngineId" Type="KeyWordRankHistories" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sites" Member="Sites">
+    <Type Name="Sites">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Domain" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="FtpAddress" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="FtpPassword" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="RdpAccount" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="RdpPassword" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="SiteTemplateId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="SiteTemplates_Sites" Member="SiteTemplates" ThisKey="SiteTemplateId" OtherKey="Id" Type="SiteTemplates" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SiteTemplates" Member="SiteTemplates">
+    <Type Name="SiteTemplates">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Color" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="Industry" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="CoverImage" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="Images" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="SiteTemplates_Sites" Member="Sites" ThisKey="Id" OtherKey="SiteTemplateId" Type="Sites" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tenders" Member="Tenders">
+    <Type Name="Tenders">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="IsSettled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TendingDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PlanCompleteDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TotalDiscount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="OptimizatorId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="ProjectId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Members_Tenders" Member="Members" ThisKey="OptimizatorId" OtherKey="Id" Type="Members" IsForeignKey="true" />
+      <Association Name="Projects_Tenders" Member="Projects" ThisKey="ProjectId" OtherKey="Id" Type="Projects" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WxMembers" Member="WxMembers">
+    <Type Name="WxMembers">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OpenId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Icon" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="NickName" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="Birthday" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Province" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="IsSubscribed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="SubscribedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Sex" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Language" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WxMenus" Member="WxMenus">
+    <Type Name="WxMenus">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ParentId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="ReplyId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Bind" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Content" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="Client" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WxMessages" Member="WxMessages">
+    <Type Name="WxMessages">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ReplyId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ImageUrl" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Url" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WxOfficalAccounts" Member="WxOfficalAccounts">
+    <Type Name="WxOfficalAccounts">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AppId" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="AppSecret" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="UsingWxLoginFunction" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="EndPoint" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Token" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="MediaSourceServerPath" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="MicroSiteHeaderImages" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MicroSiteName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="WxOfficalAccounts_WxSiteMenus" Member="WxSiteMenus" ThisKey="Id" OtherKey="WxAccountId" Type="WxSiteMenus" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WxReplies" Member="WxReplies">
+    <Type Name="WxReplies">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Keys" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="MatchType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ReplyType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MessageType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsDisabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastModifier" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActivityId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WxSiteMenus" Member="WxSiteMenus">
+    <Type Name="WxSiteMenus">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Icon" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="Link" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="WxAccountId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="WxOfficalAccounts_WxSiteMenus" Member="WxOfficalAccounts" ThisKey="WxAccountId" OtherKey="Id" Type="WxOfficalAccounts" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HelpArticleCategories" Member="HelpArticleCategories">
+    <Type Name="HelpArticleCategories">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="HelpArticleCategories_HelpArticles" Member="HelpArticles" ThisKey="Id" OtherKey="HelpArticleCategoryId" Type="HelpArticles" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Commissions" Member="Commissions">
+    <Type Name="Commissions">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MemberId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PricingUnit" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IncomeDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Projects_Commissions" Member="Projects" ThisKey="ProjectId" OtherKey="Id" Type="Projects" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Articles" Member="Articles">
+    <Type Name="Articles">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="ShortDescription" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ArticleCategoryId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Author" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="AuthorLink" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="SourceUrl" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="VoteAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ArticleCategories_Articles" Member="ArticleCategories" ThisKey="ArticleCategoryId" OtherKey="Id" Type="ArticleCategories" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ArticleCategories" Member="ArticleCategories">
+    <Type Name="ArticleCategories">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="CreateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ArticleCategories_Articles" Member="Articles" ThisKey="Id" OtherKey="ArticleCategoryId" Type="Articles" />
+    </Type>
+  </Table>
+</Database>

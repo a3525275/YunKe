@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "自定义回复管理";
+    Layout = "~/Views/Shared/_Layout_Content.cshtml";
+}
+@section styles
+{
+    <link href="/Content/css/plugins/jqgrid/ui.jqgrid.css" rel="stylesheet" />
+}
+
+<div class="wrapper wrapper-content">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>@ViewBag.Title</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="form-group">
+                <button id="btnAdd" type="button" class="btn btn-primary " onclick="addModel('')"><i class="fa fa-check"></i>&nbsp;添加文本回复</button>
+
+                <button id="btnAdd2" type="button" class="btn btn-primary " onclick="addModel(2)"><i class="fa fa-check"></i>&nbsp;添加单图文回复</button>
+
+                <button id="btnAdd3" type="button" class="btn btn-primary " onclick="addModel(3)"><i class="fa fa-check"></i>&nbsp;添加多图文回复</button>
+
+                <button id="btnDel" type="button" class="btn btn-danger " onclick="delData()">
+                    <i class="fa fa-dedent"></i>&nbsp;&nbsp;<span class="bold">删除</span>
+                </button>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <input id="txtSearchKey" type="text" class="input form-control" placeholder="搜索关键字" />
+                    <span class="input-group-btn">
+                        <button id="btnSearch" class="btn btn btn-primary" type="button"> <i class="fa fa-search"></i> 搜索</button>
+                    </span>
+                </div>
+            </div>
+
+            <div class="jqGrid_wrapper">
+                <table id="table_list"></table>
+                <div id="pager_list"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/content/js/list")
+    <script>
+        function addModel(type) {
+            $("#btnAdd" + type).button("loading");
+
+            if (type == 2) {
+                window.location.href = "@Url.Action("AddSingleTextImageReply")";
+            } else if (type == 3) {
+                window.location.href = "@Url.Action("AddMulTextImageReply")";
+            } else {
+                window.location.href = "@Url.Action("AddSingleTextReply")";
+            }
+        }
+
+        function editModel() { //编辑
+            var row = JucheapGrid.GetData();
+            if (row != null) {
+                $("#btnEdit").button("loading");
+                window.location.href = "@Url.Action("Edit")/" + row.Id;
+            } else {
+                parent.layer.alert("请选择要编辑的数据");
+            }
+        }
+
+        function delData() { //删除
+            XPage.DelData("@Url.Action("Delete")");
+        }
+
+        function searchData() { //搜索
+            var json = {
+                keywords: $("#txtSearchKey").val()
+            };
+            XPage.Search(json);
+        }
+
+        $(document).ready(function () {
+            var config = {
+                title: '自定义回复',
+                url: '@Url.Action("GetListWithPager")',
+                colNames: ['主键', '关键字', '回复类型', '已禁用', '消息类型', '创建时间', '操作'],
+                colModel: [
+                    { name: 'Id', index: 'Id', width: 60, key: true, hidden: true },
+                    { name: 'Keys', index: 'Keys', width: 60 },
+                    { name: 'ReplyTypeName', index: 'ReplyTypeName', width: 60 },
+                    {
+                        name: 'IsDisable', index: 'IsDisable', width: 60, formatter: function (cellValue) {
+                            return cellValue == false ? "否" : "是";
+                        }
+                    },
+                    { name: 'MessageTypeName', index: 'MessageTypeName', width: 60 },
+                    {
+                        name: 'CreateDateTime',
+                        index: 'CreateDateTime',
+                        width: 60,
+                        formatter: function (cellValue, options, rowObject) {
+                            return cellValue.getDate();
+                        }
+                    },
+                      {
+                          name: 'action', index: '', width: 80,
+                          formatter: function (cellValue, options, rowObject) {
+
+                              var messageType = rowObject.MessageType;
+                              var action = "edit";
+                              switch (messageType) {
+                                  case 1:
+                                  default:
+                                      action = "editSingleTextReply";
+                                      break;
+                                  case 2:
+                                      action = "editSingleTextImageReply";
+                                      break;
+                                  case 3:
+                                      action = "editMulTextImageReply";
+                                      break;
+                              }
+
+                              var menus = '<a href="/wx/reply/' + action + '/' + rowObject.Id + '">编辑</a>';
+                              return menus;
+                          }
+                      }
+                ]
+            };
+            JucheapGrid.Load(config);
+            $("#btnSearch").bind("click", searchData);
+        });
+    </script>
+}

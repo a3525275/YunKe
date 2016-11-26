@@ -1,0 +1,171 @@
+﻿<!-- Statistics -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="widget-container stats-container">
+            <div class="col-md-3">
+                <div class="number">
+                    <div class="icon globe"></div>
+                    86<small>%</small>
+                </div>
+                <div class="text">
+                    平均达标率
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="number">
+                    <div class="icon visitors"></div>
+                    613
+                </div>
+                <div class="text">
+                    已接订单数量
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="number">
+                    <div class="icon money"></div>
+                    <small>$</small>924
+                </div>
+                <div class="text">
+                    我的总收入
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="number">
+                    <div class="icon chat-bubbles"></div>
+                    325
+                </div>
+                <div class="text">
+                    我的团队规模
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Statistics -->
+<div class="row">
+    <!-- Weather -->
+    <div class="col-md-8">
+        <div class="widget-container weather">
+            <div class="widget-content padded">
+                <div class="row text-center">
+                    <div class="col-sm-6 col-md-6 col-lg-4 today">
+                        <div style="overflow:hidden;">
+                            <p style="float:left;margin-left:50px; line-height:30px;">市场订单总数</p>
+                            <img src="~/se7en/images/icon-tags.png" class="fl" style="margin-left:50px;" />
+                        </div>
+                        <div class="number">
+                            1123012
+                        </div>
+                    </div>
+                    <div class="col-sm-2 hidden-xs">
+                        <p>
+                            今日市场新增
+                        </p>
+                        <img src="~/se7en/images/icon-columns_2.png" style="display:block;margin:20px auto 14px" />
+                        <div class="number">
+                            56
+                        </div>
+                    </div>
+                    <div class="col-sm-2 hidden-xs">
+                        <p>
+                            即将预期任务
+                        </p>
+                        <img src="~/se7en/images/icon-columns.png" style="display:block;margin:20px auto 14px" />
+                        <div class="number">
+                            75
+                        </div>
+                    </div>
+                    <div class="col-sm-2 hidden-xs">
+                        <p>
+                            排名上升关键词
+                        </p>
+                        <img src="~/se7en/images/icon-sort-by-attributes-alt.png" style="display:block;margin:20px auto 14px" />
+                        <div class="number">
+                            82
+                        </div>
+                    </div>
+                    <div class="col-sm-2 hidden-md hidden-sm hidden-xs">
+                        <p>
+                            排名下降关键词
+                        </p>
+                        <img src="~/se7en/images/icon-sort-by-attributes-alt_2.png" style="display:block;margin:20px auto 14px" />
+                        <div class="number">
+                            64
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Weather --><!-- Bar Graph -->
+    <!-- end Donut Charts --><!-- Pie Chart -->
+    <div class="col-lg-4">
+        <div class="widget-container small">
+            <div class="heading">
+                昨天收入
+            </div>
+            <div class="widget-content padded">
+                <div class="pie-chart">
+                    <div id="pie-chart"></div>
+                    <ul class="chart-key">
+                        <li>
+                            <span class="green"></span>我的任务 1,000.00
+                        </li>
+                        <li>
+                            <span class="orange"></span>团队佣金 5,000.00
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Bar Graph -->
+</div>
+<div class="row">
+    <!-- Area Charts:Morris -->
+    <div class="col-xs-7">
+        <div class="widget-container fluid-height">
+            <div class="heading over">
+                <span class="fl">佣金收入</span>
+                <div class="col-md-3 fr">
+                    <div class="input-group date datepicker">
+                        <input class="form-control" type="text"><span class="input-group-addon"><i class="icon-calendar"></i></span>
+                    </div>
+                </div>
+                <span class="fr">至</span>
+                <div class="col-md-3 fr">
+                    <div class="input-group date datepicker">
+                        <input class="form-control" type="text"><span class="input-group-addon"><i class="icon-calendar"></i></span>
+                    </div>
+                </div>
+                <div class="fr day_tab">
+                    <a class="fl style">最近15天</a>
+                    <a class="fl">最近30天</a>
+                </div>
+            </div>
+
+            <div class="widget-content padded text-center">
+                <div class="graph-container">
+                    <div class="caption"></div>
+                    <div class="graph" id="hero-area"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Area Charts:Morris --><!-- Chat -->
+    <div class="col-md-5">
+        <div class="widget-container fluid-height">
+            <div class="heading">
+                Bar Charts
+            </div>
+            <div class="widget-content padded text-center">
+                <div class="graph-container">
+                    <div class="caption"></div>
+                    <div class="graph" id="hero-bar"></div>
+                    <!-- Bar Charts:Morris -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Chat -->
+</div>

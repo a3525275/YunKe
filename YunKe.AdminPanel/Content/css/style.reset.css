@@ -1,0 +1,13 @@
+
+span.field-validation-error {
+    margin-top: 10px;
+}
+
+
+input.help-block, textarea.help-block, select.help-block {
+    margin-top: 0px;
+}
+
+.float-e-margins .btn {
+     margin-bottom: 0px; 
+}

@@ -1,0 +1,46 @@
+﻿@{
+    var labelCategory = "登录";
+}
+<div class="banner_box zhuce_banner_box over">
+    <img src="@Url.FrontUrl().ThemeFileUrl("images/login_banner.png")" class="zhuce_banner">
+    <div class="login_box zhuce_box">
+        <div class="login_tab zhuce_tab over" id="login_tab">
+            <a class="fl style">账号登陆</a>
+            <a class="fl">微信扫码</a>
+        </div>
+
+        <div id="login">
+            <div class="login" style="display: block;">
+                <div class="login_tab_2 over">
+                    <a class="fl"><span>账号密码登录</span></a>
+                    <a class="fr"><span>手机验证码登录</span></a>
+                </div>
+
+                <div class="zhuce_inpput mt_20">
+                    <input placeholder="请输入您的账号/手机号/邮箱" type="text">
+                </div>
+
+                <div class="zhuce_yzm mt_10 over">
+                    <input placeholder="*请输入右侧验证码" type="text" class="fl">
+                    <a class="fr" href="">忘记密码？</a>
+                </div>
+
+                <div class="zhuce_yzm mt_10 over">
+                    <input placeholder="*请输入右侧验证码" type="text" class="fl">
+                    <a href="javascript:void(0);" class="fr"><img src="@Url.FrontUrl().ThemeFileUrl("images/yzm.png")"></a>
+                </div>
+
+                <div class="over checked_box mt_20">
+                    <p class="fl checked_text" style="margin-left:0;">还没有账号？<a href="zhuce.html">立即注册</a></p>
+                </div>
+                <a class="login_button">登陆</a>
+            </div>
+
+            <div class="login wx_login" style="display: none;">
+                <p class="mt_30">微信扫码登录，快速安全</p>
+                <div class="wx_ewm over"><img src="images/wx_erweima.png"></div>
+                <p>还没有账号？<a href="zhuce.html">立即注册</a></p>
+            </div>
+        </div>
+    </div>
+</div>

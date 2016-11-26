@@ -1,0 +1,53 @@
+﻿<!--公用头部 开始-->
+<!--页眉-->
+<div class="head_box w_100">
+    <div class="head w_1200">
+        <!--<div class="shouji fl">触屏版</div>-->
+
+        <div class="top_nav fr over">
+            <a class="fl" href="index.html">首页</a>
+            <a class="fl" href="login.html">登陆</a>
+            <a class="fl top_nav_zhuce" href="zhuce.html">注册</a>
+            <a class="fl" href="">帮助中心</a>
+            <a class="fl top_nav_jiantou" href="">关于我们</a>
+        </div>
+        <img src="/cms_data/sites/yunke/themes/default/images/erweima.png" id="erweima" />
+    </div>
+</div>
+<!--搜索-->
+<div class="w_100 sousuo_box">
+    <div class="w_1200 over">
+        <a href="index.html" class="logo fl"><img src="/cms_data/sites/yunke/themes/default/images/logo.png" /></a>
+        <a class="sousuo_xuqiu_button fr">立即发布需求</a>
+        <span class="sousuo_huozhe fr">或者</span>
+        <div class="fr over sousuo">
+            <span class="fl">价格查询</span>
+            <input class="sousuo_input fl" type="text" placeholder="查询关键字价格" />
+            <a href="" class="fr sousuo_button">搜索</a>
+        </div>
+    </div>
+</div>
+
+<!--导航-->
+<div class="nav_box w_100">
+    <div class="nav w_1200 over">
+        <a class="fl style" href="index.html">首页</a>
+        <a class="fl" href="renwudating.html">SEO任务</a>
+        <a class="fl" href="mianfeijianzhan.html">免费建站</a>
+        <a class="fl" href="zhuanjiabang.html">专家榜</a>
+        <a class="fl" href="dailijiameng.html">代理加盟</a>
+        <a class="fl" href="xinwenzixun.html">新闻资讯</a>
+        <a class="fl" href="kehuzhongxin.html">客户中心</a>
+    </div>
+</div>
+<!--公用头部 结束-->
+
+
+<ul class="menu">
+@foreach (var item in MenuHelper.Top())
+{
+    if (item.Navigation.Show)
+    {
+       <li class ='@(MenuHelper.IsCurrent(item) ? "current" : "")'> @Html.FrontHtml().PageLink(item.LinkText, item.FullName)</li>
+    }
+}</ul>

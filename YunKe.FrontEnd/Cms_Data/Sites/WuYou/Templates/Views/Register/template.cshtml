@@ -1,0 +1,35 @@
+﻿@{
+    var labelCategory = "注册";
+}
+
+<div class="banner_box zhuce_banner_box over">
+    <img src="@Url.FrontUrl().ThemeFileUrl("images/zhuce_banner.png")" class="zhuce_banner">
+    <div class="login_box zhuce_box">
+        <div class="login_tab zhuce_tab over">
+            <a>注册</a>
+        </div>
+
+        <div class="zhuce_inpput mt_20">
+            <input placeholder="*请输入联系人QQ号码" type="text">
+        </div>
+
+        <div class="zhuce_inpput mt_10">
+            <input placeholder="*请输入联系人手机号码" type="text">
+        </div>
+
+        <div class="zhuce_yzm mt_10 over">
+            <input placeholder="*请输入右侧验证码" type="text" class="fl">
+            <a class="fr" href="javascript:void(0);"><img src="@Url.FrontUrl().ThemeFileUrl("images/yzm.png")"></a>
+        </div>
+
+        <div class="zhuce_yzm mt_10 over">
+            <input placeholder="*请输入右侧验证码" type="text" class="fl">
+            <input type="button" class="fr" href="javascript:void(0);" id="btn" value="获取验证码">
+        </div>
+
+        <div class="over checked_box mt_20">
+            <a class="fl checked_button"></a><p class="fl checked_text">我已阅读并同意<a href="">《注册服务协议》</a></p>
+        </div>
+        <a class="login_button">免费注册</a>
+    </div>
+</div>

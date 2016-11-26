@@ -1,0 +1,152 @@
+﻿@model YunKe.Weixin.Entity.WxOfficalAccount
+
+@{
+    ViewBag.Title = "公众号配置";
+    Layout = "~/Views/Shared/_Layout_Content.cshtml";
+}
+
+<div class="wrapper wrapper-content">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>@ViewBag.Title</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            @using (Html.BeginForm("Edit", "OfficalAccounts", new { id = Model.Id }, FormMethod.Post, new { @class = "form-horizontal" }))
+            { 
+                <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-8">
+                        <div class="alert alert-success">
+                            @*<button type="button" class="close" data-dismiss="alert">×</button>*@
+                            <h4>提示!</h4>
+                            如果您开通了自定义菜单，请将 <a href="http://mp.weixin.qq.com/" target="_blank">微信公众平台</a> 下的 AppId 与 AppSecret 配置在下方。
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.AppId)：</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.AppId, new { @class = "form-control", placeholder = "AppId" })
+                        @Html.ValidationMessageFor(m => m.AppId)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.AppSecret)：</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.AppSecret, new { @class = "form-control", placeholder = "AppSecret" })
+                        @Html.ValidationMessageFor(m => m.AppSecret)
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top:40px;">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-8">
+                        <div class="alert alert-success">
+                            @*<button type="button" class="close" data-dismiss="alert">×</button>*@
+                            <h4>提示!</h4>
+                            请将 URL 与 TOKEN 配置到 <a href="http://mp.weixin.qq.com/" target="_blank">微信公众平台</a> 下。
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Token)：</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Token, new { @class = "form-control", placeholder = "Token" })
+                        @Html.ValidationMessageFor(m => m.Token)
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.EndPoint)：</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.EndPoint, new { @class = "form-control", placeholder = "服务器回调地址" })
+                        @Html.ValidationMessageFor(m => m.EndPoint)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.MediaSourceServerPath)：</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.MediaSourceServerPath, new { @class = "form-control", placeholder = "媒体资源服务器地址" })
+                        @Html.ValidationMessageFor(m => m.MediaSourceServerPath)
+                        <span class="help-block">媒体（如图片，音频等文件的）文件路径服务器，在向微信用户发送图片时使用。</span>
+                        <span class="help-block">默认为文件上传时所在的服务器地址。</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-8">
+                        <div class="controls">
+                            <label>
+                                @Html.CheckBoxFor(m => m.UsingWxLoginFunction)
+                                @Html.DisplayNameFor(m => m.UsingWxLoginFunction)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top:40px;">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-8">
+                        <div class="alert alert-success">
+                            <h4>微官网设置</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.MicroSiteName)：</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.MicroSiteName, new { @class = "form-control", placeholder = "名称" })
+                        @Html.ValidationMessageFor(m => m.MicroSiteName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.MicroSiteHeaderImages)：</label>
+                    <div class="col-sm-8">
+                        @Html.TextAreaFor(m => m.MicroSiteHeaderImages, new { @class = "form-control", placeholder = "顶部图片（逗号分隔）" })
+                        @Html.ValidationMessageFor(m => m.MicroSiteHeaderImages)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">微官网菜单：</label>
+                    <div class="col-sm-8">
+                        <p>
+                            <a href="@Url.Action("index","microsite",new { accountId = Model.Id })" class="btn btn-primary">设置</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.CreateDateTime)：</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">
+                            @Html.DisplayFor(m => m.CreateDateTime, new { @class = "form-control", placeholder = "创建时间" })
+                        </p>
+                        @Html.ValidationMessageFor(m => m.CreateDateTime)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-8">
+                        <button class="btn btn-info" type="submit">保存</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section scripts{
+    @Scripts.Render("~/content/js/user")
+    <script>
+        $("#btnBack").bind("click", function (e) {
+            XPage.GoTo(e.target, "@Url.Action("Index")");
+        });
+    </script>
+}

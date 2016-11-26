@@ -1,0 +1,145 @@
+﻿@model YunKe.Commerce.Articles.Domain.Article
+
+@{
+    var ctrl = Request.RequestContext.RouteData.DataTokens["controller"] as string;
+
+    ViewBag.Title = "添加文章";
+    Layout = "~/Views/Shared/_Layout_Content.cshtml";
+}
+
+<div class="wrapper wrapper-content">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>@ViewBag.Title</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            @{
+                List<YunKe.Commerce.Articles.Domain.ArticleCategory> acs = new YunKe.Commerce.EfDbContext.YunKeDbContext().ArticleCategorys.ToList();
+                List<SelectListItem> items = new List<SelectListItem>();
+                acs.ForEach(x =>
+                {
+                    items.Add(new SelectListItem()
+                    {
+                        Value = x.Id,
+                        Text = x.Name
+                    });
+                });
+                ViewBag.Items = items;
+            }
+            @using (Html.BeginForm("Add", ctrl, FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.ArticleCategoryId)：</label>
+                    <div class="col-sm-8">
+                        @Html.DropDownList("Items", ViewBag.Items as SelectList, "", new { @class = "form-control",@Id = "ArticleCategoryId", @Name = "ArticleCategoryId" })
+                        @Html.ValidationMessageFor(m => m.ArticleCategoryId)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Title)：</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Title)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(m => m.ShortDescription)：</label>
+                    <div class="col-sm-8">
+                        @Html.EditorFor(m => m.ShortDescription, new { @class = "form-control", })
+                        @Html.ValidationMessageFor(m => m.ShortDescription)
+                    </div>
+                </div>
+                
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">@Html.DisplayNameFor(m => m.Author)：</label>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(m => m.Author, new { @class = "form-control required", })
+                            @Html.ValidationMessageFor(m => m.Author)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">@Html.DisplayNameFor(m => m.AuthorLink)：</label>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(m => m.AuthorLink, new { @class = "form-control required", })
+                            @Html.ValidationMessageFor(m => m.AuthorLink)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">@Html.DisplayNameFor(m => m.AuthorLink)：</label>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(m => m.AuthorLink, new { @class = "form-control required", })
+                            @Html.ValidationMessageFor(m => m.AuthorLink)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">@Html.DisplayNameFor(m => m.SourceUrl)：</label>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(m => m.SourceUrl, new { @class = "form-control required", })
+                            @Html.ValidationMessageFor(m => m.SourceUrl)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">@Html.DisplayNameFor(m => m.VoteAmount)：</label>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(m => m.VoteAmount, new { @class = "form-control required", })
+                            @Html.ValidationMessageFor(m => m.VoteAmount)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">@Html.DisplayNameFor(m => m.ViewAmount)：</label>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(m => m.ViewAmount, new { @class = "form-control required", })
+                            @Html.ValidationMessageFor(m => m.ViewAmount)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">@Html.DisplayNameFor(m => m.Tags)：</label>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(m => m.Tags, new { @class = "form-control", })
+                            @Html.ValidationMessageFor(m => m.Tags)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">@Html.DisplayNameFor(m => m.AllowComment)：</label>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(m => m.AllowComment, new { @class = "form-control required", })
+                            @Html.ValidationMessageFor(m => m.AllowComment)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Sequence)：</label>
+                        <div class="col-sm-8">
+                            @Html.TextBoxFor(m => m.Sequence, new { @class = "form-control", placeholder = "排序" })
+                            @Html.ValidationMessageFor(m => m.Sequence)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">@Html.DisplayNameFor(m => m.Content)：</label>
+                        <div class="col-sm-8">
+                            @Html.TextAreaFor(m => m.Content, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Content)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-8">
+                            <button class="btn btn-info" type="submit">保存</button>
+                            <button class="btn btn-white" type="button" id="btnBack">返回</button>
+                        </div>
+                    </div>
+            }
+        </div>
+    </div>
+</div>
+@section scripts{
+    @Scripts.Render("~/content/js/jqueryValidate")
+    <script>
+        $("#btnBack").bind("click", function (e) {
+            XPage.GoTo(e.target, "@Url.Action("Index")");
+        });
+    </script>
+}

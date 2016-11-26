@@ -1,0 +1,15 @@
+.fl{ float:left;}
+.fr{ float:right;}
+.over{ overflow:hidden;}
+.ml_10{margin-left:10px;}
+.mr_10{margin-right:10px;}
+.mt_10{margin-top:10px;}
+.mb_10{margin-bottom:10px;}
+
+.day_tab a{ display:block;width:80px;height:25px; text-align:center; line-height:25px;}
+.day_tab a.style{ background:#007aff;color:#fff;}
+
+.height_auto{height:auto;padding:20px 0;box-shadow:none;}
+.llq .list ul{padding-left:10px;}
+.llq .list ul li{border-bottom:none;padding-right:20px;}
+.tixian_button{ display:block;}

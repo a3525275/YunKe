@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    @Html.FrontHtml().HtmlTitle()
+    @Html.FrontHtml().Meta()
+
+    @Html.FrontHtml().RegisterScripts()
+    @Html.FrontHtml().RenderView("Builtin.Se7en", ViewData)
+
+    @Html.FrontHtml().RegisterStyles()
+</head>
+<body>
+    <div class="modal-shiftfix">
+        <!-- Navigation -->
+        @Html.FrontHtml().RenderView("Builtin.Header", ViewData)
+        <!-- End Navigation -->
+        <div class="container-fluid main-content">
+            @Html.FrontHtml().Position("Main")
+            @Html.FrontHtml().RenderView("Builtin.Footer", ViewData)
+        </div>
+    </div>
+</body>
+</html>

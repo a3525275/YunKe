@@ -1,0 +1,116 @@
+﻿@model WxMenuModel
+
+@{
+    ViewBag.Title = "编辑菜单";
+    Layout = "~/Views/Shared/_Layout_Content.cshtml";
+}
+
+<div class="wrapper wrapper-content">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>@ViewBag.Title</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            @using (Html.BeginForm("Edit", "Menus", new { id = Model.Id }, FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                if (Model.ParentMenu != null)
+                {
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">@Html.LabelFor(m => m.ParentMenu)：</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-static">
+                                @Html.DisplayFor(m => m.ParentMenu.Name, new { @class = "form-control" })
+                            </p>
+                        </div>
+                    </div>
+                }
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Name)：</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "名称" })
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Bind)：</label>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(m => m.Bind, Model.BindTypes, new { @class = "form-control", data_bind = "value: Bind", placeholder = "绑定类型" })
+                        @Html.ValidationMessageFor(m => m.Bind)
+                    </div>
+                </div>
+                <div class="form-group" data-bind="visible: Bind() == 'Key' " style="display:none;">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Keywords)：</label>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(m => m.BindValue, Model.Keywords, new { @class = "form-control", placeholder = "关键字" })
+                        @Html.ValidationMessageFor(m => m.BindValue)
+                    </div>
+                </div>
+                <div class="form-group" data-bind="visible: Bind() == 'Topic' " style="display:none;">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.BindTopic)：</label>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(m => m.BindTopic, Model.Topics, new { @class = "form-control", placeholder = "关键字" })
+                        @Html.ValidationMessageFor(m => m.Topics)
+                    </div>
+                </div>
+                <div class="form-group" data-bind="visible: Bind() == 'Url' " style="display:none;">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Url)：</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Url, new { @class = "form-control", placeholder = "链接" })
+                        @Html.ValidationMessageFor(m => m.Url)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.Sequence)：</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Sequence, new { @class = "form-control", placeholder = "排序" })
+                        @Html.ValidationMessageFor(m => m.Sequence)
+                        <p class="help-block">
+                            序号越小越靠前
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.LabelFor(m => m.CreateDateTime)：</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">
+                            @Html.DisplayFor(m => m.CreateDateTime, new { @class = "form-control", placeholder = "CreateDateTime" })
+                        </p>
+                        @Html.ValidationMessageFor(m => m.CreateDateTime)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-8">
+                        <button class="btn btn-info" type="submit">保存</button>
+                        <button class="btn btn-white" type="button" id="btnBack">返回</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section scripts{
+    @Scripts.Render("~/content/js/user")
+    <script>
+        $("#btnBack").bind("click", function(e) {
+            XPage.GoTo(e.target, "@Url.Action("Index")");
+        });
+
+        function viewModel (){
+            var self = this;
+            self.Bind = ko.observable();
+            self.BindValue = ko.observable();
+            self.Url = ko.observable("http://");
+            self.BindTopic = ko.observable();
+        }
+        var mainVm = new viewModel();
+        ko.applyBindings(mainVm);
+    </script>
+}
